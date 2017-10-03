@@ -1,0 +1,8 @@
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/monokai.css';
+@import 'utils';
+.ReactCodeMirror {
+    border: 0.1px solid $oc-violet-5;
+    width: 560px;
+    height: 800px;
+}

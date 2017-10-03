@@ -1,0 +1,19 @@
+@import 'utils';
+.sidebar {
+    display: flex;
+    background-color: $oc-violet-4;
+    flex-direction: column;
+    width: 40px;
+    border: 0.1px solid $oc-indigo-3;
+    height: 1500px;
+    padding: 0.3em;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+    div:first-child {
+        margin-top: 25px;
+    }
+}

@@ -1,0 +1,36 @@
+@import 'utils';
+.renderer {
+    width: 560px;
+    background-color: white;
+    border: 0.1px solid $oc-gray-5;
+    padding: 0.5em;
+    height: 800px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    code {
+        border: solid 0.1px $oc-gray-6;
+        background-color: $oc-gray-2;
+        padding: 0.6em;
+    }
+    h1 { 
+        font-size: 1.6em;
+    }
+    h2 { 
+        font-size: 1.4em;
+    }
+    h3 { 
+        font-size: 1.25em;
+    }
+    h4 { 
+        font-size: 1.1em;
+    }
+    h5 {
+        font-size: 1em;
+    }
+    h6 {
+        font-size: 0.9em;
+    }
+    p, li {
+        font-size: 0.9em;
+    }
+}

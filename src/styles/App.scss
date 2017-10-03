@@ -1,0 +1,16 @@
+@import 'utils';
+body {
+  padding: 0;
+  margin: 0;
+}
+.app-container {
+  display: flex;
+  justify-content: flex-start;
+  background-color: $oc-blue-0;
+}
+.app-container_content {
+  margin-left: 0.2em;
+  height: 100vh;
+  padding: 1em;
+  background-color: $oc-indigo-0;
+}

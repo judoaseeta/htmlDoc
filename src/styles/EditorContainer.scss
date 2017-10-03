@@ -1,0 +1,11 @@
+@import 'utils';
+.editorContainer__outer {
+    display: flex;
+    flex-flow: nowrap column;
+    height: 100%;
+    max-width: 1200px;
+}
+.editorContainer__inner {
+    display: flex;
+    justify-content: space-between;
+}

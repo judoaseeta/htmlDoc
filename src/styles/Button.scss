@@ -1,0 +1,30 @@
+@import 'utils';
+.button {
+    padding: 0.4em;
+    border-width: 0.1px;
+    border-style: solid;
+    &.disabled {
+        opacity: 0.6;
+    }
+    &.selected {
+        border: 1px solid $oc-gray-0;
+    }
+}
+.circle {
+    border-radius: 50%;
+}
+.red {
+    border-color: $oc-red-1;
+    background-color: $oc-red-9;
+    color: $oc-gray-0;
+}
+.blue {
+    border-color: $oc-blue-1;
+    background-color: $oc-blue-9;
+    color: $oc-blue-0;
+}
+.green {
+    border-color: $oc-green-1;
+    background-color: $oc-green-9;
+    color: $oc-green-0;
+}
