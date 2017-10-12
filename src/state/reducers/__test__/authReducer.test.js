@@ -4,9 +4,10 @@ import { Map } from 'immutable';
 describe('authReducer', () => {
     it('should be update signin, token when signin', () => {
         const initialState = Map({
-            isSignIn: false,
-            token: '',
-            signUpUser: null
+            'auth': Map({
+                isSignIn: false,
+                token: ''
+            })
         });
         const mockToken = 'adsvvawewfewf';
         const mockAction = {
@@ -17,27 +18,26 @@ describe('authReducer', () => {
         }
         const expected = {
             isSignIn: true,
-            token: mockToken,
-            signUpUser: null
+            token: mockToken
         };
         const Reducer = authReducer(initialState, mockAction);
-        expect(Reducer.toJS()).toEqual(expected);
+        expect(Reducer.get('auth').toJS()).toEqual(expected);
     });
     it('should be remove token when signout', () => {
         const initialState = {
-                isSignIn: false,
-                token: '',
-                signUpUser: null
+            isSignIn: false,
+            token: ''
         };
         const signInState = Map({
-            isSignIn: true,
-            token: 'fwfewfewfew',
-            signUpUser: null
+            'auth': Map({
+                isSignIn: true,
+                token: 'fwfewfewfew'
+            })
         })
         const mockAction = {
-            type: actionTypes.AUTH_REQUEST.REQUEST_SIGN_OUT
+            type: actionTypes.AUTH_PROCEED.SIGN_OUT_PROCEEED
         };
         const Reducer = authReducer(signInState, mockAction);
-        expect(Reducer.toJS()).toEqual(initialState);
+        expect(Reducer.get('auth').toJS()).toEqual(initialState);
     });
 });

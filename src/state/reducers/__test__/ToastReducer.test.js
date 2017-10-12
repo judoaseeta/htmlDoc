@@ -4,8 +4,10 @@ import { Map } from 'immutable';
 describe('ToastReducer', () => {
     it('should be updated depending on actionTypes', () => {
         const initialState = Map({
-            isToastOn: false,
-            ToastMessage: ''
+            'toast': Map({
+                isToastOn: false,
+                ToastMessage: ''
+            }) 
         });
         const mockMessage = 'hi there';
         const mockAction = {
@@ -19,6 +21,6 @@ describe('ToastReducer', () => {
             ToastMessage: mockMessage
         }
         const Reducer = Toast(initialState, mockAction);
-        expect(Reducer.toJS()).toEqual(expected);
+        expect(Reducer.get('toast').toJS()).toEqual(expected);
     });
 });
