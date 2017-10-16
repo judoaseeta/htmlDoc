@@ -14,11 +14,6 @@ const SideBar = (props) => (
             >
                 <i className="fa fa-files-o fa-2x" aria-hidden="true" />
             </NavLink>
-            <NavLink
-                to="/trends"
-            >
-                <i className="fa fa-cog fa-2x" aria-hidden="true" />
-            </NavLink>
             {
                 props.isSignIn
                 ? <NavLink

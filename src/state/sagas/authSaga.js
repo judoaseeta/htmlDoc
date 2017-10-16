@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import actionTypes from '../actions/actionTypes';
 import { call, fork, put, take, takeLatest } from 'redux-saga/effects'
-import { getCurrentUser, getUserToken, signIn, signup } from '../../utils/authentication';
+import { getCurrentUser, signIn, signup } from '../../utils/authentication';
 import Toast from '../actions/toast';
 import { signInSuccess, signOutProceed } from '../actions/authProceed';
 function* getSignedUser() {
