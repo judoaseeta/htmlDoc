@@ -1,0 +1,5 @@
+@import 'utils';
+.AuthForm {
+    @include common-form();
+    width: 400px;
+}

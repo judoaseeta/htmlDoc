@@ -1,0 +1,37 @@
+@import 'utils';
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+.toast_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    background:radial-gradient(to right bottom, $oc-teal-5, $oc-teal-3);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 6;
+    width: 100%;
+    transition: height 2s;
+    &.on{
+        height: 40px;
+        .toast_container_content {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        .toast_container_closebutton {
+            display: block;
+        }
+    }
+}
+.toast_container_content {
+    display: none;
+    margin-left: 5em;
+}
+.toast_container_closebutton {
+    display: none;
+    margin-left: auto;
+    margin-right: 2em;
+}

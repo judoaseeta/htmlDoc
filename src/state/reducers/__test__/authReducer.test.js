@@ -6,32 +6,33 @@ describe('authReducer', () => {
         const initialState = Map({
             'auth': Map({
                 isSignIn: false,
-                token: ''
+                user: null
             })
         });
-        const mockToken = 'adsvvawewfewf';
+        const mockUser = 'adsvvawewfewf';
         const mockAction = {
             type: actionTypes.AUTH_PROCEED.SIGN_IN_PROCEED,
             payload: {
-                token: mockToken
+                user: mockUser
             }
         }
         const expected = {
             isSignIn: true,
-            token: mockToken
+            user: mockUser
         };
         const Reducer = authReducer(initialState, mockAction);
         expect(Reducer.get('auth').toJS()).toEqual(expected);
     });
     it('should be remove token when signout', () => {
+        const mockUser = 'fwfewfewfew'
         const initialState = {
             isSignIn: false,
-            token: ''
+            user: null
         };
         const signInState = Map({
             'auth': Map({
                 isSignIn: true,
-                token: 'fwfewfewfew'
+                user: mockUser
             })
         })
         const mockAction = {

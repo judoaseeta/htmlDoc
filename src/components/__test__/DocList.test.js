@@ -1,19 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import DocList from '../DocList';
 import DocListItem from '../DocListItem';
-import Data from './DocList.data';
-configure({ adapter: new Adapter() });
+import { ListTypeData } from './DocList.data';
 describe('<DocList />', () => {
-    it('should render <DocListItem /> as many as Data.length', () => {
-        const Wrapper = shallow(
+    let Wrapper;
+    const mockSelectDoc = jest.fn();
+    beforeEach(() => {
+        Wrapper = mount(
             <DocList 
-                DocList={Data}
+                Docs={ListTypeData}
+                setDoc={mockSelectDoc}
             />
         );
-        const DocListItems =  Wrapper.find(DocListItem);
-        expect(DocListItems.length).toEqual(Data.length);
+    })
+    afterAll(() => {
+        Wrapper.detach();
+    })
+    it('should render <DocListItem /> as many as Data.length', () => {
+        expect(Wrapper.find(DocListItem).length).toEqual(ListTypeData.size);
     });
+    it('should invoke selectDoc and pass doc id as argument to it when click DocListItem', () => {
+        const FirstDocListItem =  Wrapper.find('h4').first();
+        FirstDocListItem.simulate('click');
+        expect(mockSelectDoc.mock.calls.length).toEqual(1);
+        expect(mockSelectDoc.mock.calls[0][0]).toEqual(ListTypeData.get('0').docId);
+    })
 });

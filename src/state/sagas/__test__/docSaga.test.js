@@ -1,5 +1,5 @@
 import actionTypes from '../../actions/actionTypes';
-import { getUser, watchGetDoc, watchQueryDocs, watchUploadDoc, workerForApi } from '../docSaga';
+import { getUser,getDocWorker, watchGetDoc, watchQueryDocs, watchUploadDoc, workerForApi } from '../docSaga';
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import * as matchers from 'redux-saga-test-plan/matchers';
 import { docQuerySucceed } from '../../actions/api_proceed';
@@ -13,7 +13,7 @@ describe('testing doc saga', () => {
         saga.next()
             .take(actionTypes.API_REQUEST.QUERY_DOCS)
             .next()
-            .call(workerForApi, queryDocs)
+            .call(queryDocs)
             .next(['a','b'])
             .put(docQuerySucceed(['a','b']))
             .next()
@@ -28,9 +28,41 @@ describe('testing doc saga', () => {
         saga.next()
             .take(actionTypes.API_REQUEST.QUERY_DOCS)
             .next()
-            .call(workerForApi, queryDocs)
+            .call(queryDocs)
             .throw(new Error('Mr.Error'))
             .put(toast.toastOn('Mr.Error'))
+            .next()
+            .isDone()
+    });
+    it('testing watchGetdoc saga when invoke getDocWorker', () => {
+        const saga = testSaga(watchGetDoc);
+        saga.next()
+            .takeEveryEffect(actionTypes.DOC_CONTROL.SET_DOC_REQUEST, getDocWorker)
+    });
+    it('testing getDocWorker', () => {
+        const action = {
+            type: actionTypes.DOC_CONTROL.SET_DOC_REQUEST,
+            payload: {
+                docId: '$#$#$$#$#'
+            }
+        }
+        const mockResult = {
+            title: `i'm your father`,
+            content: '### jedi is return',
+            createdAt: 4244242545,
+            lastModified: null,
+            userId: '#erewre',
+            dociD: '$#$#$$#$#'
+        }
+        const saga = testSaga(getDocWorker, action)
+        saga.next()
+            .call(getDoc, action.payload.docId)
+            .next(mockResult)
+            .put(SetDoc(mockResult))
+            .next()
+            .put(toast.toastOn(`Here is ${mockResult.title}`))
+            .next()
+            .put(push(`/doc/${mockResult.docId}`))
             .next()
             .isDone()
     });

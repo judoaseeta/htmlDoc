@@ -1,0 +1,12 @@
+@import 'utils';
+.editorpanel_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.editorpanel_container_inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+

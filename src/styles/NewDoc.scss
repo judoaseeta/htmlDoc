@@ -1,0 +1,17 @@
+@import 'utils';
+.newdoc_button-close {
+    font-weight: bold;
+    padding: 0.1em;
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.newdoc_container {
+    position: relative;
+    z-index: 500;
+    width: 400px;
+}
+.newdoc_form {
+    @include common-form();
+}

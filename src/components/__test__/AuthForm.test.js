@@ -1,43 +1,48 @@
 import React from 'react';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import AuthForm from '../AuthForm';
-import Input from '../Input';
-configure({ adapter: new Adapter() });
+import ValidatedInput from '../ValidatedInput';
 describe('<AuthForm/> ', () => {
     let Wrapper;
     const mockOnChange = jest.fn();
     const mockOnSubmit = jest.fn();
+    const mockErrors = {
+        email: '',
+        password: ''
+    }
+    const mockValues = {
+        email: '',
+        password: ''
+    }
     beforeEach(() => {
-        Wrapper = shallow(
-            <AuthForm 
-                onChangeHandler={mockOnChange}
-                onSubmitHandler={mockOnSubmit}
-            />
+        Wrapper = mount(
+                <AuthForm 
+                    onChange={mockOnChange}
+                    onSubmit={mockOnSubmit}
+                    header={({textvalue}) => <h1>{textvalue}</h1>}
+                    textvalue="hi"
+                    _placeholder="My Input"
+                    errors={mockErrors}
+                    values={mockValues}
+                >
+                {({errors, onChange,_placeholder, values}) => 
+                    <ValidatedInput 
+                        onChange={onChange}
+                        error={errors.email}
+                        _placeholder={_placeholder}
+                        value={values.email}
+                    />
+                }
+                </AuthForm>
         );
     });
     it('onChange should be invoked when types to input', () => {
-        const input = Wrapper.find(Input).first();
-        const mockType = {
-            target: {
-                value: 'hi'
-            }
-        };
-        input.simulate('change', mockType);
-        expect(mockOnChange.mock.calls[0][0]).toEqual(mockType);
+        const testHeader = Wrapper.find('h1').first();
+        expect(testHeader.text()).toEqual('hi');
     });
     it('onSubmit should be invoked when user submit', () => {
-        const form = Wrapper.find('form').first();
-        const mockEvent = {
-            email: {
-                value: 'judoaseeta@naver.com'
-            },
-            password: {
-                value: '111321'
-            }
-        }
-        form.simulate('submit', mockEvent);
-        expect(mockOnSubmit.mock.calls[0][0]).toEqual(mockEvent);
+        const form = Wrapper.find('form');
+        form.simulate('submit');
+        expect(mockOnSubmit).toBeCalled();
     });
 });

@@ -1,0 +1,30 @@
+@import 'utils';
+.modalWrapper_container {
+    display: none;
+    &.on {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        background-color: rgba(0,0,0,0.3);
+    }
+}
+.modalWrapper_button {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    background-color: transparent;
+    color: $oc-gray-8;
+    border-color: $oc-gray-8;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modalWrapper_children {
+    position: relative;
+    z-index: 400;
+    margin-top: 100px;
+}

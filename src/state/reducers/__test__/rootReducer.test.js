@@ -5,7 +5,7 @@ describe('combineReducer', () => {
         const store = createStore(rootReducer);
         const initialAuthState = {
             isSignIn: false,
-            token: ''
+            user: null
         };
         expect(store.getState().auth.get('auth').toJS()).toEqual(initialAuthState);
     });

@@ -3,9 +3,13 @@
     display: flex;
     flex-flow: nowrap column;
     height: 100%;
-    max-width: 1200px;
+    width: auto;
+    padding: 0.5em;
+    overflow-x: hidden;
 }
 .editorContainer__inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0.5em;
+    overflow-x: hidden;
 }

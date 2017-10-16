@@ -1,31 +1,16 @@
 import React from 'react';
-import Input from './Input';
 import Button from './Button';
-const AuthForm = ({onChangeHandler,onSubmitHandler}) => (
+import '../styles/AuthForm.scss';
+const AuthForm = (props) => (
     <form
-        onSubmit={onSubmitHandler}
+        className="AuthForm"
+        onSubmit={props.onSubmit}
     >
-        <label
-            htmlFor="email"
-        >E-mail
-        </label>
-        <Input 
-            type="email"
-            name="email"
-            onChange={onChangeHandler}
-        />
-        <label
-            htmlFor="password"
-        >
-        Password
-        </label>
-        <Input 
-            type="password"
-            name="password"
-            onChange={onChangeHandler}
-        />
+        {props.header ? props.header(props) : null}
+        {props.children(props)}
+        {props.footer ? props.footer(props) : null}
         <Button
-            color='blue'
+            color={props.buttonColor || 'blue'}
         >Submit
         </Button>
     </form>

@@ -1,6 +1,7 @@
 @import 'utils';
 .renderer {
-    width: 560px;
+    min-width: 500px;
+    max-width: 560px;
     background-color: white;
     border: 0.1px solid $oc-gray-5;
     padding: 0.5em;

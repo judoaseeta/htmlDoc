@@ -1,0 +1,5 @@
+@import 'utils';
+.ConfirmForm {
+    @include common-form();
+    width: 400px;
+}

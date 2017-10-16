@@ -1,0 +1,81 @@
+@import 'utils';
+.docListItem_container-outer{
+    @include DoclistItemOuter();
+    &:hover {
+        border: 0.2px solid $oc-red-5;
+        .docListItem_container-overlay {
+            background: linear-gradient(to bottom, $oc-gray-9, $oc-gray-6);
+            color: white;
+            > h4:hover {
+                cursor: pointer;
+                text-decoration: underline;
+                position: relative;
+                .tooltip {
+                    background: linear-gradient(to right, $oc-gray-3, $oc-gray-1);
+                    border: 0.1px solid $oc-gray-5;
+                    display: block;
+                    position: absolute;
+                    top: calc(100% + 0.5em);
+                    left: 5%;
+                    padding: 0.15em;
+                    font-size: 12px;
+                    border-radius: 5px;
+                    color: black;
+                }
+            }
+    }
+}
+}
+.docListItem_container-overlay{
+    padding: 0.4em;
+    background: white;
+    transition: background 2s ease;
+    min-height: 50px;
+    max-height: 100px;
+    .tooltip{
+        display: none;
+    }
+}
+.docListItem_container-inner{
+    padding: 0.3em;
+}
+.docListItem-renderer{
+    min-width: 175px;
+    max-width: 230px;
+    background-color: white;
+    border: 0.1px solid $oc-gray-5;
+    padding: 0.2em;
+    height: 350px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    code {
+        border: solid 0.1px $oc-gray-6;
+        background-color: $oc-gray-2;
+        padding: 0.1em;
+    }
+    h1 { 
+        font-size: 9px;
+    }
+    h2 { 
+        font-size: 8px;
+    }
+    h3 { 
+        font-size: 7px;
+    }
+    h4 { 
+        font-size: 6px;
+    }
+    h5 {
+        font-size: 5px;
+    }
+    h6 {
+        font-size: 4px;
+    }
+    p, li {
+        font-size: 5px;
+    }
+    img {
+        width: 60%;
+        height: 60%;
+    }
+}

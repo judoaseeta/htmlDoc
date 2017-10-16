@@ -1,0 +1,9 @@
+@import 'utils';
+.doclist {
+    border: 1px solid $oc-cyan-2;
+    display: grid;
+    grid-template-columns: repeat(4 ,1fr);
+    grid-gap: 0.5em;
+    padding: 0.8em;
+    min-height: 100vh;
+}
